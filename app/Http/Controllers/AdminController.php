@@ -145,8 +145,8 @@ class AdminController extends Controller
             }
         }
 
-        $imageName      = $request->title . '-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $image->getClientOriginalExtension();
-        $imageThumbName = $request->title . '-thumbnail-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $imageThumb->getClientOriginalExtension();
+        $imageName      = '/assets/product/'.$request->title . '-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $image->getClientOriginalExtension();
+        $imageThumbName = '/assets/product/preview/'.$request->title . '-thumbnail-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $imageThumb->getClientOriginalExtension();
 
         $image->move($dstPath, $imageName);
         $imageThumb->move($dstPath, $imageThumbName);

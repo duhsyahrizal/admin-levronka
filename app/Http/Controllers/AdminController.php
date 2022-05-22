@@ -145,8 +145,8 @@ class AdminController extends Controller
             }
         }
 
-        $imageName      = '/assets/product/'.$request->title . '-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $image->getClientOriginalExtension();
-        $imageThumbName = '/assets/product/preview/'.$request->title . '-thumbnail-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $imageThumb->getClientOriginalExtension();
+        $imageName      = $request->title . '-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $image->getClientOriginalExtension();
+        $imageThumbName = $request->title . '-thumbnail-' . \Carbon\Carbon::now()->format('d-m-Y') . '-' . \Str::random(8) . '.' . $imageThumb->getClientOriginalExtension();
 
         $image->move($dstPath, $imageName);
         $imageThumb->move($dstPath, $imageThumbName);
@@ -154,8 +154,8 @@ class AdminController extends Controller
         $request->request->remove('price');
         $request->request->add([
             'price'         => $price,
-            'image'         => $imageName,
-            'image_thumb'   => $imageThumbName
+            'image'         => '/assets/product/'.$imageName,
+            'image_thumb'   => '/assets/product/preview/'.$imageThumbName
         ]);
         $request->request->add($data);
 

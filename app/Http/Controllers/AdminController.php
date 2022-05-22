@@ -154,8 +154,8 @@ class AdminController extends Controller
         $request->request->remove('price');
         $request->request->add([
             'price'         => $price,
-            'image'         => '/assets/product/'.$imageName,
-            'image_thumb'   => '/assets/product/preview/'.$imageThumbName
+            'image'         => 'assets/product/'.$imageName,
+            'image_thumb'   => 'assets/product/'.$imageThumbName
         ]);
         $request->request->add($data);
 

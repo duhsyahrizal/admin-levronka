@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'cors'], function() {
+Route::post('/login', 'ApiController@login');
+
+Route::group(['middleware' => ['cors', 'auth:sanctum']], function() {
     Route::get('product', 'ApiController@productJson');
     Route::get('user/visit', 'ApiController@userVisit');
+
+    Route::post('/logout', 'ApiController@logout');
 });
